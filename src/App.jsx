@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      Home page
+      Home page updates by naufan
     </>
   )
 }
