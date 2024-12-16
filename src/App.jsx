@@ -8,6 +8,7 @@ import Contact from './pages/Contact'
 import NoPage from './Components/NoPage'
 import LoginPage from './pages/Login';
 import ForgotPasswordForm from './pages/Forgotpassword';
+import SignUp from './Components/SignUp';
 
 
 function App() {
@@ -16,15 +17,17 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-            <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="*" element={<NoPage />} />
-            <Route path="login" element={<LoginPage />} />
-            <Route path="forgot" element={<ForgotPasswordForm />} />
+          <Route index element={<Home />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="forgot" element={<ForgotPasswordForm />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>
-      
+
     </>
   )
 }
