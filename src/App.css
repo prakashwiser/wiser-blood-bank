@@ -35,3 +35,30 @@
 .read-the-docs {
   color: #888;
 } */
+
+.bgimage {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/R.jpeg') no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.signup {
+  background: linear-gradient(45deg, rgba(234, 0, 255, 0.562), rgba(3, 205, 212, 0.63));
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.fs1 {
+  font-size: 60px;
+}
+
+.font {
+  font-style: italic;
+  background: linear-gradient(to top,  rgba(0, 255, 213, 0.705),  rgb(216, 201, 201));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.warning{
+  background: linear-gradient(45deg,  rgba(0, 255, 213, 0.705),  rgb(216, 201, 201));
+}
