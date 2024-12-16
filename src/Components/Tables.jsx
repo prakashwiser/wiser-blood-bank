@@ -25,22 +25,20 @@ function Tables({ tableHeading = 'unknown table', data }) {
                 </thead>
                 <tbody>
 
-                    {data && data.map((item, index, keys) => {
-                        return (<tr key={index}> key='1'
-                            <td>{index + 1}</td>
-                            {keys.map(items =>
-                                <td>{items}</td>
-                            )}
-                            {/* {item.name && <td>{item?.name}</td>}
-                        {item.age && <td>{item?.age}</td>}
-                        {item.profession && <td>{item?.profession}</td>}
-                        {item.city && <td>{item?.city}</td>}
-                        {item.state && <td>{item?.state}</td>}
-                        {item.country && <td>{item?.country}</td>} */}
-                        </tr>)
-                    }
-
-
+                    {data && data.map((item, index, keys) =>
+                        <tr>
+                            <td>{index+1}</td>
+                            {item.name && <td>{item?.name}</td>}
+                            {item.age && <td>{item?.age}</td>}
+                            {item.profession && <td>{item?.profession}</td>}
+                            {item.city && <td>{item?.city}</td>}
+                            {item.state && <td>{item?.state}</td>}
+                            {item.country && <td>{item?.country}</td>}
+                            {item.a && <td>{item?.a}</td>}
+                            {item.b && <td>{item?.b}</td>}
+                            {item.o && <td>{item?.o}</td>}
+                            {item.ab && <td>{item?.ab}</td>}
+                        </tr>
                     )}
                 </tbody>
             </Table>
