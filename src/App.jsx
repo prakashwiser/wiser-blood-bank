@@ -6,6 +6,8 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import NoPage from './Components/NoPage'
+import LoginPage from './pages/Login';
+import ForgotPasswordForm from './pages/Forgotpassword';
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NoPage />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="forgot" element={<ForgotPasswordForm />} />
         </Routes>
       </BrowserRouter>
       
