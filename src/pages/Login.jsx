@@ -1,39 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState, useRef  } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
+import emailjs from '@emailjs/browser';
+// import nodemailer from "nodemailer";
+// const nodemailer = require("nodemailer");
 const Data = [
   {
     email: 'kuralarasu@gmail.com',
     password: '1234'
   },
   {
-    email: 'asfaq@gmail.com',
+    email: 'prakashvadakadu8@gmail.com',
     password: '12345'  
-  }
-];
+  },
+  {
+    email: 'akashakar123@gmail.com',
+    password: '12345'  
+  },
+  {
+    email: 'nithishkumar9659@gmail.com',
+    password: '12345'  
+  },
+]
+
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const form = useRef();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
-    const user = Data.find(user => user.email === email && user.password === password);
-    
+    const user = await Data.find(user => user.email === email && user.password === password);
+     
     if (user) {
-      console.log('Login successful');
+      console.log(email);
+      console.log(form);
+      
+      await emailjs
+      .sendForm('service_b288yi1','template_ptp70b3', form.current, {
+        publicKey: 'jWsPy4MJluY_yXdjG',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+
+      await console.log('Login successful');
       navigate('/');
     } else {
       setError('Invalid email or password');
     }
   };
 
+  
+
   return (
     <div className="login-container">
-      <form onSubmit={handleSubmit} className="login-form">
+      <form ref={form} onSubmit={handleSubmit} className="login-form">
         <h2>Login</h2>
 
         {error && <div className="error-message">{error}</div>}
