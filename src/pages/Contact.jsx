@@ -73,7 +73,7 @@ const Contact = () => {
               required
               style={styles.input}
             />
-            {formik.touched.name && formik.errors.name ? (
+            {formik.touched.name && formik.errors.name ? ( 
               <div style={{ color: "red", fontSize: "0.9rem" }}>
                 {formik.errors.name}
               </div>

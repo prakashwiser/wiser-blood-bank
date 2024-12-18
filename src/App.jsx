@@ -11,7 +11,7 @@ import Mail from './Components/Mail';
 import Admin from './Components/Admin';
 import Footer from "./pages/Footer";
 import Navbars from "./Components/Navbar";
-import SignUp from "./Components/SignUp";
+
 
 function App() {
   return (
@@ -19,8 +19,8 @@ function App() {
       <BrowserRouter>
       <Navbars />
         <Routes>
-          <Route index element={<SignUp />} />
-          <Route path="/home" element={<Home />} />
+          <Route index element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/mail" element={<Mail />} />
