@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Logo from "../assets/logo image.jpg";
 import Image from "./Image";
 import { Link } from "react-router-dom";
+import Text from "./Text";
 
 const Navbars = () => {
   return (
@@ -15,10 +16,11 @@ const Navbars = () => {
           src={Logo}
           alt="Logo"
         />
+        <Text css='text-success fs-4 fw-bold' text='Avanam Blood Bank'/>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
-            className="me-auto my-2 my-lg-0"
+            className="ms-auto my-2 my-lg-0"
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
