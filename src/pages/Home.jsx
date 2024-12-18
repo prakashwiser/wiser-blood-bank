@@ -3,7 +3,7 @@ import Navbars from '../Components/Navbar'
 import Image from '../Components/Image'
 import Tables from '../Components/Tables'
 import Div from '../Components/Div'
-import banner from "../assets/Donor-banner.webp";
+import banner from "../assets/home-banner.webp";
 
 const data = [
     { name: 'noufan', age: 20, profession: 'student' },
@@ -32,7 +32,7 @@ const data2 = [
 function Home() {
     return (
         <>
-            <Image src={banner} alt='banner' style={bannerStyle} />
+            <Image src={banner} className='img-fluid' alt='banner' />
             <Div className='container'>
                 <Tables tableHeading='Donor Details' data={data} />
                 <Tables data={data1} />
