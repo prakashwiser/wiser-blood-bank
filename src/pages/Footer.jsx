@@ -49,7 +49,7 @@ function Footer() {
       <Row>
         <Col lg={4}>
           <Div className="d-flex flex-column justify-content-center align-items-center">
-            <Div className='fs-2 fw-1'>
+            <Div className='fs-4 fw-1'>
               <Link to="/" className="text-dark text-decoration-none">About</Link>
             </Div>
             <Text css='text-center' text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum odio id tincidunt fermentum.'/>
@@ -57,13 +57,13 @@ function Footer() {
         </Col>
 
         <Col lg={4} className="d-flex flex-column justify-content-center align-items-center my-3 my-md-0">
-          <Div className='fs-2 fw-1'>Quick Links</Div>
+          <Div className='fs-4 fw-1'>Quick Links</Div>
           <Link className="text-dark text-decoration-none" to="/">Home</Link>
           <Link className="text-dark text-decoration-none" to="/about">About</Link>
           <Link className="text-dark text-decoration-none" to="/contact">Contact</Link>
         </Col>
 
-        <Col lg={4}>
+        <Col lg={4} className='d-flex flex-column justify-content-center align-items-center'>
           <Text text='&copy; 2024 Your Company. All rights reserved.' />
         </Col>
       </Row>
