@@ -1,52 +1,35 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-.card {
-  padding: 2em;
-}
-.read-the-docs {
-  color: #888;
-} */
-
 .bgimage {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/R.jpeg') no-repeat;
+  background: url('./assets/black.png') no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: auto;
 }
 
 .signup {
   background: linear-gradient(45deg, rgba(234, 0, 255, 0.562), rgba(3, 205, 212, 0.63));
   border-radius: 20px;
   padding: 40px;
+  box-shadow: 1px 3px 6px 8px rgb(17, 0, 252);
+  -webkit-box-shadow: 1px 3px 6px 8px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 1px 3px 6px 8px rgba(234, 245, 233, 0.6);
 }
+
+.pulsing-border {
+  border: 3px solid #3498db;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+      border-color: #3498db;
+  }
+  50% {
+      border-color: #9b59b6;
+  }
+  100% {
+      border-color: #3498db;
+  }
+}
+
 
 .fs1 {
   font-size: 60px;
@@ -54,11 +37,35 @@
 
 .font {
   font-style: italic;
-  background: linear-gradient(to top,  rgba(0, 255, 213, 0.705),  rgb(216, 201, 201));
-  -webkit-background-clip: text;
+  color: white;
+  /* -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: transparent; */
 }
-.warning{
-  background: linear-gradient(45deg,  rgba(0, 255, 213, 0.705),  rgb(216, 201, 201));
+
+
+
+.custom-error {
+  color: white;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* From Uiverse.io by levxyca */
+button {
+  font-size: 1.5rem;
+  color: #fafafa !important;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid #fafafa;
+  background: #252525 !important;
+  box-shadow: 3px 3px #fafafa;
+  cursor: pointer;
+  margin: 35px 0;
+}
+
+button:active {
+  box-shadow: none;
+  transform: translate(3px, 3px);
 }
