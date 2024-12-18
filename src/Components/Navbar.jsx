@@ -1,35 +1,45 @@
-
-import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 import Logo from "../assets/logo image.jpg";
-import Image from './Image';
-const styles = {
-    width: '80px',
-    height: 'auto',
-    marginRight: '10px'
-};
-function Navbars() {
+import Image from "./Image";
+import { Link } from "react-router-dom";
+import Text from "./Text";
 
-    return (
-        <Navbar expand="sm" className="bg-body-tertiary">
-            <Container fluid>
-                <Navbar.Brand href="#" className="text-success fs-4 fw-bold mx-4 d-flex align-items-center">
-                    <Image style={styles} src={Logo} alt="logo image" />
-                    Avanam Blood bank
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll">
-                    <Form className="d-flex ms-auto mx-5">
-                        <Button variant="outline-success">Button</Button>
-                    </Form>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
-    );
-}
+const Navbars = () => {
+  return (
+    <Navbar expand="lg" className="bg-body-tertiary">
+      <Container fluid>
+        <Image
+          style={{ width: "80px", height: "auto", marginRight: "10px" }}
+          src={Logo}
+          alt="Logo"
+        />
+        <Text css='text-success fs-4 fw-bold' text='Avanam Blood Bank'/>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="ms-auto my-2 my-lg-0"
+            style={{ maxHeight: "100px" }}
+            navbarScroll
+          >
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
+            <Nav.Link href="/contact">Contact</Nav.Link>
+          </Nav>
+          <div className="d-flex gap-3">
+            <Link to="/signin" className="btn btn-success text-white">
+              Sign in
+            </Link>
+            <Link to="/signup" className="btn btn-outline-success">
+              Sign up
+            </Link>
+          </div>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
 
 export default Navbars;

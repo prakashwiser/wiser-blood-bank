@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './pages/Home'
@@ -9,13 +9,15 @@ import NoPage from './Components/NoPage'
 import SignUp from './Components/SignUp';
 import Mail from './Components/Mail';
 import Admin from './Components/Admin';
-
+import Footer from "./pages/Footer";
+import Navbars from "./Components/Navbar";
+import SignUp from "./Components/SignUp";
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
+      <Navbars />
         <Routes>
           <Route index element={<SignUp />} />
           <Route path="/home" element={<Home />} />
@@ -23,13 +25,11 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/mail" element={<Mail />} />
           <Route path="/admin" element={<Admin />} />
-          {/* <Route path="/Login" element={<Login />} /> */}
-          <Route path="*" element={<NoPage />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-
     </>
-  )
+  );
 }
 
-export default App
+export default App;

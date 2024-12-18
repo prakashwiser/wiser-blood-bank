@@ -22,7 +22,7 @@ const bannerStyle = {
 function Home() {
     return (
         <>
-            <Navbars />
+            {/* <Navbars /> */}
             <Image src={banner} alt='banner' style={bannerStyle} />
             <Div className='container'>
                 <Tables tableHeading='Donor Details' data={data} />
