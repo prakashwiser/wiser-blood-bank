@@ -8,20 +8,27 @@ import Contact from './pages/Contact';
 import NoPage from './Components/NoPage';
 import Footer from './pages/Footer';
 import Navbars from './Components/Navbar';
+import SignUp from './Components/SignUp';
+
 
 function App() {
   return (
-    <BrowserRouter> 
-      <Navbars />
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<NoPage />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter> 
-  );
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="forgot" element={<ForgotPasswordForm />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Routes>
+      </BrowserRouter>
+
+    </>
+  )
 }
 
 export default App;
