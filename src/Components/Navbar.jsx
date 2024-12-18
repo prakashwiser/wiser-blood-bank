@@ -1,43 +1,43 @@
-
-import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 import Logo from "../assets/logo image.jpg";
-import Image from './Image';
-import Text from './Text';
-import { Link } from 'react-router-dom';
-const styles = {
-    width: '60px',
-    height: 'auto',
-    marginRight: '10px'
-    
-};
-function Navbars() {
+import Image from "./Image";
+import { Link } from "react-router-dom";
 
-    return (
-        <Navbar expand="sm" className="bg-body-tertiary">
-            <Container fluid>
-                <Navbar.Brand href="/" className="text-success fs-4 fw-bold mx-4 d-flex align-items-center">
-                    <Image style={styles} src={Logo} alt="logo image" />
-                    Avanam Blood bank
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll">
-                    <Form className="d-flex ms-auto mx-5 gap-3">
-                        <Link className="text-dark text-decoration-none fs-5" to="/about"><Text text="About"/></Link>
-                        <Link className="text-dark text-decoration-none fs-5" to="/contact"><Text text="Contact Us"/></Link>
-                        <Form className='gap-2 d-flex'>
-                        <Button className='outline-danger' variant="outline-danger">Sign In</Button>
-                        <Button className='btn-danger'>Sign UP</Button>
-                        </Form>
-                    </Form>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
-    );
-}
+const Navbars = () => {
+  return (
+    <Navbar expand="lg" className="bg-body-tertiary">
+      <Container fluid>
+        <Image
+          style={{ width: "80px", height: "auto", marginRight: "10px" }}
+          src={Logo}
+          alt="Logo"
+        />
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: "100px" }}
+            navbarScroll
+          >
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
+            <Nav.Link href="/contact">Contact</Nav.Link>
+          </Nav>
+          <div className="d-flex gap-3">
+            <Link to="/signin" className="btn btn-success text-white">
+              Sign in
+            </Link>
+            <Link to="/signup" className="btn btn-outline-success">
+              Sign up
+            </Link>
+          </div>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
 
 export default Navbars;
