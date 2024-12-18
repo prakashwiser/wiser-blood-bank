@@ -204,9 +204,6 @@ function SignUp() {
             let updateValues = { ...UpdateExistingUser, link: `http://localhost:5173/mail/${UpdateExistingUser.id}`, adminEmail, adminLink: `http://localhost:5173/admin/${UpdateExistingUser.id}` };
 
             console.log('link added -> ', updateValues);
-
-
-            // Send email to the user.
             try {
                 await emailjs.send('service_p8uoogm', 'template_951ocpd', updateValues, 'm4PILZ5HjxJt37hVX');
                 console.log('user Emails sent successfully!');
