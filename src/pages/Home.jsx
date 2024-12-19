@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';  // Don't forget to import axios
+import axios from 'axios';
 import Navbars from '../Components/Navbar';
 import Image from '../Components/Image';
 import Tables from '../Components/Tables';
@@ -14,6 +14,7 @@ function Home() {
     });
 
     const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,11 +23,21 @@ function Home() {
                 setData(response.data);
             } catch (error) {
                 toast.error("Error: " + error.message);
+            } finally {
+                setIsLoading(false);
             }
         };
 
         fetchData();
     }, []);
+
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
+
+    if (!data.length) {
+        return <p>No data available</p>;
+    }
 
     return (
         <>
@@ -35,10 +46,7 @@ function Home() {
             <Div className='container'>
                 <Tables tableHeading='Donor Details' data={data} userData={userData} />
                 {userData && (
-                    <>
-                        <Tables data={data} />
-                        <Tables data={data} />
-                    </>
+                    <Tables tableHeading='Additional Details' data={data} />
                 )}
             </Div>
         </>
