@@ -32,7 +32,7 @@ const data2 = [
 function Home() {
     return (
         <>
-            <Image src={banner} className='img-fluid' alt='banner' />
+            <Image src={banner} className='img-fluid w-100' alt='banner' />
             <Div className='container'>
                 <Tables tableHeading='Donor Details' data={data} />
                 <Tables data={data1} />
