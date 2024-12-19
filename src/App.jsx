@@ -11,20 +11,22 @@ import Mail from './Components/Mail';
 import Admin from './Components/Admin';
 import Footer from "./pages/Footer";
 import Navbars from "./Components/Navbar";
+import Login from "./pages/Login";
 
 
 function App() {
   return (
     <>
       <BrowserRouter>
-      <Navbars />
+        <Navbars />
         <Routes>
           <Route index element={<Home />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/mail" element={<Mail />} />
+          <Route path="/mail/:id" element={<Mail />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>
