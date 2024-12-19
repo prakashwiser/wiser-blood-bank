@@ -1,62 +1,84 @@
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function Admin({ values}) {
-    const navigate = useNavigate();
-    const value = [
-        {email: 'sahcvb@gmail.com'},
-    ]
-    // Function to fetch data and update user details
-    const getFunction = async () => {
-        try {
-            console.log('inside');
-            
-            // Fetch data from the API
-            const response = await axios.get('https://67593faf60576a194d140245.mockapi.io/Donor');
-            const data = response.data
-            await console.log('Response data:', response.data);
-
-            // Find the existing user by email
-            const existingUser = await data.find(user => user.email === value.email);
-            await console.log('Existing user:', existingUser);
-            console.log('test');
-            
-            if (existingUser) {
-                // Update user details
-                await axios.put(`https://67593faf60576a194d140245.mockapi.io/Donor/${existingUser.id}`, {
-                    name: values.name,
-                    email: values.email,
-                    number: values.number,
-                    password: values.password,
-                    userValidate: 'yes', // Changed to 'yes' as per logic
-                });
-                console.log('User updated successfully');
-
-                // Reset the form and navigate
-                navigate('/home');
-            } else {
-                alert('User not found!');
-            }
-        } catch (error) {
-            console.log('Error during form submission:', error);
-            alert('An error occurred while submitting the form. Please try again later.');
-        }
-        if (!existingUser) {
-            console.error('User not found with email:', values.email);
-            alert('No user found with the provided email.');
-            return;
-        }
-        
-    };
+function Mail() {
+    const { id } = useParams();
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        // Call getFunction on component mount
-        getFunction();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []); // Dependency array ensures this runs only once
+        axios.get("https://67593faf60576a194d140245.mockapi.io/Donor")
+            .then(response => {
+                setData(response.data);
+                setLoading(false);
+            })
+            .catch(error => {
+                setLoading(false);
+                toast.error('Error fetching data.',error);
+            });
+    }, []);
 
-    return null; // No UI to render
+    const filteredData = data.find(item => item.id === id);
+
+    useEffect(() => {
+        if (filteredData) {
+            const updatedData = { ...filteredData, adminValidate: 'yes' };
+            axios.put(`https://67593faf60576a194d140245.mockapi.io/Donor/${id}`, updatedData)
+                .then(response => {
+                    toast.success('User validated successfully!');
+                    setShowModal(true);
+                })
+                .catch(error => {
+                    toast.error('Failed to update data.',error);
+                });
+        }
+    }, [filteredData, id, ToastContainer]);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    return (
+        <div>
+            {filteredData ? (
+                <>
+                    <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+                        <Modal.Header closeButton>
+                            <Modal.Title>User Details</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <h5>Email: {filteredData.email}</h5>
+                            <h6>Validation Status: {filteredData.adminValidate}</h6>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={() => setShowModal(false)}>
+                                Close
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
+                </>
+            ) : (
+                <p>Details not available for this ID.</p>
+            )}
+
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+        </div>
+    );
 }
 
-export default Admin;
+export default Mail;

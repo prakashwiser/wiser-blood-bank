@@ -1,116 +1,188 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-
-
-const ForgotPasswordForm = () => {
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-    const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (!email) {
-            setError('Please enter your email address.');
-            return;
-        }
-        setIsLoading(true);
-        setError('');
-        setMessage('');
-
-        setTimeout(() => {
-            if (email === 'user@example.com') {
-                setMessage('If the email exists, you will receive a password reset link shortly.');
-                setError('');
-            } else {
-                setError('Email not found.');
-                setMessage('');
-            }
-            setIsLoading(false);
-        }, 1000);
-    };
-
-    return (
-        <div style={Bgimg}>
-            <div style={styles.container}>
-                <h2>Forgot Password</h2>
-                <form onSubmit={handleSubmit} style={styles.form}>
-                    <div style={styles.inputGroup}>
-                        <label htmlFor="email">Email Address:</label>
-                        <input
-                            type="email"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Enter your email"
-                            style={styles.input}
-                        />
-                    </div>
-                    {error && <p style={styles.error}>{error}</p>}
-                    {message && <p style={styles.success}>{message}</p>}
-                    <button type="submit" style={styles.button} disabled={isLoading}>
-                        {isLoading ? 'Sending...' : 'Request OTP'}
-                    </button>
-                </form>
-            </div>
-        </div>
-    );
-};
-
-const Bgimg = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    boxSizing: 'border-box',
-    height: "100vh",
-    backgroundImage: 'url("/public/images/Blood1.JPG")',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',  
-    backgroundRepeat: 'no-repeat', 
-}
 const styles = {
-    container: {
+    outerContainer: {
+        backgroundImage: 'url("https://via.placeholder.com/1500x1000")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    formContainer: {
         maxWidth: '400px',
-        margin: '50px auto', 
+        width: '100%',
         padding: '20px',
-        border: '1px solid #ccc',
+        backgroundColor: 'rgba(255, 255, 255, 0.85)',
         borderRadius: '8px',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
         textAlign: 'center',
-    }
-    ,
+        fontFamily: 'Arial, sans-serif',
+    },
+    heading: {
+        fontSize: '24px',
+        color: '#333',
+        marginBottom: '20px',
+    },
     form: {
         display: 'flex',
         flexDirection: 'column',
-        padding: '20px'
-
+        gap: '15px',
     },
     inputGroup: {
-        marginBottom: '15px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '5px',
+    },
+    label: {
+        fontSize: '14px',
+        color: '#555',
     },
     input: {
-        padding: '8px',
+        padding: '12px',
         width: '100%',
         border: '1px solid #ccc',
         borderRadius: '4px',
+        fontSize: '14px',
+        boxSizing: 'border-box',
+    },
+    errorMessage: {
+        color: 'red',
+        fontSize: '0.9rem',
+        marginTop: '5px',
+    },
+    successMessage: {
+        color: 'green',
+        fontSize: '0.9rem',
+        marginTop: '15px',
     },
     button: {
-        padding: '10px',
+        padding: '12px',
         backgroundColor: '#4CAF50',
-        color: '#fff',
+        color: 'white',
         border: 'none',
         borderRadius: '4px',
         cursor: 'pointer',
-    },
-    error: {
-        color: 'red',
-        fontSize: '0.9rem',
-    },
-    success: {
-        color: 'green',
-        fontSize: '0.9rem',
+        fontSize: '16px',
+        transition: 'background-color 0.3s ease',
     },
 };
 
+const ForgotPasswordForm = () => {
+    const [message, setMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const [data, Setdata] = useState([]);
+    const navigate = useNavigate();
 
+    const validationSchema = Yup.object({
+        email: Yup.string()
+            .email('Invalid email address')
+            .required('Please enter your email address.'),
+    });
+
+    useEffect(() => {
+        axios.get('https://67593faf60576a194d140245.mockapi.io/Donor')
+            .then(response => {
+                Setdata(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
+
+    const handleSubmit = async (values) => {
+        const { email } = values;
+        if (email) {
+            let Filterdata = data.filter(items => items.email === email);
+            // console.log(Filterdata);
+
+            if (Filterdata.length > 0) {
+                let UserEmail = Filterdata[0].email;
+                let UserPassword = Filterdata[0].password;
+                let User = {
+                    email: UserEmail,
+                    password: UserPassword
+                };
+                try {
+                    const response = await emailjs.send('service_7baanbi', 'template_r1gx9e6', User, 'prWY1xVRkSwGQId78');
+                    toast.success('Password reset instructions have been sent to your email.'); 
+                    navigate('/login')
+                } catch (e) {
+                    if (e.text && e.text.includes("Gmail_API: Request had insufficient authentication scopes")) {
+                        toast.error('Error: Insufficient Gmail API scopes. Please reauthorize Gmail.');
+                    } else {
+                        toast.error('An error occurred while sending the email. Please try again.');
+                    }
+                }
+            } else {
+                toast.error('Email not found.');
+            }
+        } else {
+            toast.error('Please enter a valid email address.');
+        }
+
+        setIsLoading(false);
+        setMessage('');
+    };
+
+    return (
+        <>
+            <ToastContainer 
+                position="top-right" 
+                autoClose={5000} 
+                hideProgressBar={false} 
+                newestOnTop={false} 
+                closeOnClick 
+                pauseOnFocusLoss 
+                draggable 
+                pauseOnHover={false} 
+            />
+
+            <div style={styles.outerContainer}>
+                <div style={styles.formContainer}>
+                    <h2 style={styles.heading}>Forgot Password</h2>
+                    <Formik
+                        initialValues={{ email: '' }}
+                        validationSchema={validationSchema}
+                        onSubmit={handleSubmit}
+                    >
+                        {() => (
+                            <Form style={styles.form}>
+                                <div style={styles.inputGroup}>
+                                    <label htmlFor="email" style={styles.label}>Email Address:</label>
+                                    <Field
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="Enter your email"
+                                        style={styles.input}
+                                    />
+                                    <ErrorMessage name="email" component="p" style={styles.errorMessage} />
+                                </div>
+                                {message && <p style={styles.successMessage}>{message}</p>}
+                                <button
+                                    type="submit"
+                                    style={styles.button}
+                                    disabled={isLoading}
+                                >
+                                    {isLoading ? 'Sending...' : 'Request Password'}
+                                </button>
+                            </Form>
+                        )}
+                    </Formik>
+                </div>
+            </div>
+        </>
+    );
+};
 
 export default ForgotPasswordForm;
