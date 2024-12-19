@@ -16,21 +16,21 @@ const Navbars = () => {
           src={Logo}
           alt="Logo"
         />
-        <Nav.Link href="/"><Text css='text-success fs-4 fw-bold' text='Avanam Blood Bank'/></Nav.Link>
+        <Link className="text-dark text-decoration-none" to="/"><Text css='text-success fs-4 fw-bold' text='Avanam Blood Bank'/></Link>
         
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
-            className="ms-auto my-2 my-lg-0"
+            className="ms-auto my-2 my-lg-0 gap-3 me-3"
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/about">About</Nav.Link>
-            <Nav.Link href="/contact">Contact</Nav.Link>
+            <Link className="text-dark text-decoration-none" to="/">Home</Link>
+            <Link className="text-dark text-decoration-none" to="/about">About</Link>
+            <Link className="text-dark text-decoration-none" to="/contact">Contact</Link>
           </Nav>
           <div className="d-flex gap-3">
-            <Link to="/signin" className="btn btn-success text-white"> 
+            <Link  to="/signin" className="btn btn-success text-white"> 
               Sign in
             </Link>
             <Link to="/signup" className="btn btn-outline-success">
