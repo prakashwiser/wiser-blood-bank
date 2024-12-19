@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+.banner {
+    /* background: linear-gradient(135deg, #6e7bff, #3a4dff); */
+    height: 100vh;
+    background-image: url('/public/images/Blood.PNG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-form-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width:100;
+    height: auto;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.login-form-container:hover {
+    transform: scale(1.05);
+}
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+}
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #3a4dff;
+    background-color: #fff;
+    outline: none;
+}
+label {
+    font-size: 14px;
+    color: #555;
+    text-align: left;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.error {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 4px;
+    text-align: left;
+}
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3a4dff;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: red;
+}
+@media (max-width: 500px) {
+    .login-form-container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    input {
+        padding: 12px;
+    }
+}
