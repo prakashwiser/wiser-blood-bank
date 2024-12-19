@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import '../Login.css';
 import { Link, useNavigate } from 'react-router-dom';
+import Navbars from '../Components/Navbar';
 
 const LoginForm = () => {
   const navigate = useNavigate()
@@ -40,7 +41,7 @@ const LoginForm = () => {
 
       if (user.userValidate === 'yes' && user.adminValidate === 'yes') {
         console.log('login success');
-        alert('Login Successfully')
+        localStorage.setItem('userData', user.email)
         navigate('/')
         resetForm();
       } else if (user.userValidate === 'no' && user.adminValidate === 'yes') {
@@ -53,10 +54,6 @@ const LoginForm = () => {
         alert('pls check mail and admin');
         resetForm();
       }
-      const userValidations = user.filter((useraccess) => useraccess.userValidate == "no" || useraccess.adminValidate == "no")
-      console.log(userValidations);
-      const show = userValidations != 'yes' ? alert('You are not approved by Admin') : navigate('/')
-      console.log(show);
 
       if (!user) {
         setLoginError('Email not found.');
@@ -83,36 +80,39 @@ const LoginForm = () => {
   };
 
   return (
-    <div className='banner'>
-      <div className="login-form-container">
-        <h1>Login</h1>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-          <Form>
-            <div>
-              <label htmlFor="email">Email</label>
-              <Field type="email" id="email" name="email" />
-              <ErrorMessage name="email" component="div" className="error" />
-            </div>
-            <div>
-              <label htmlFor="password">Password</label>
-              <Field type="password" id="password" name="password" />
-              <ErrorMessage name="password" component="div" className="error" />
-            </div>
-            <div className="forgot-password">
-              <Link to="/forgot" className='text-dark'>Forgot your password?</Link>
-            </div>
-            <button type="submit" disabled={isLoading}>
-              {isLoading ? 'Logging in...' : 'Login'}
-            </button>
-            {loginError && <div className="error">{loginError}</div>}
-          </Form>
-        </Formik>
+    <>
+      <Navbars />
+      <div className='banner'>
+        <div className="login-form-container">
+          <h1>Login</h1>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+          >
+            <Form>
+              <div>
+                <label htmlFor="email">Email</label>
+                <Field type="email" id="email" name="email" />
+                <ErrorMessage name="email" component="div" className="error" />
+              </div>
+              <div>
+                <label htmlFor="password">Password</label>
+                <Field type="password" id="password" name="password" />
+                <ErrorMessage name="password" component="div" className="error" />
+              </div>
+              <div className="forgot-password">
+                <Link to="/forgot" className='text-dark'>Forgot your password?</Link>
+              </div>
+              <button type="submit" disabled={isLoading}>
+                {isLoading ? 'Logging in...' : 'Login'}
+              </button>
+              {loginError && <div className="error">{loginError}</div>}
+            </Form>
+          </Formik>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

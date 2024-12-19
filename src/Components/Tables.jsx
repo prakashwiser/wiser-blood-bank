@@ -1,14 +1,19 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
+import Div from './Div';
 
-function Tables({ tableHeading = 'Unknown Table', data }) {
+function Tables({ tableHeading = 'Unknown Table', data, userData = null }) {
     if (!data || data.length === 0) return <div>No data available</div>;
     const keys = Object.keys(data[0]);
 
     return (
         <>
-            <h3 className='py-3'>{tableHeading}</h3>
-            <Table striped bordered style={{textTransform:"capitalize"}} hover size="sm" className='text-center capliatize'>
+            <Div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <h3 className='py-3'>{tableHeading}</h3>
+                {userData && <button>Add New Donor</button>}
+
+            </Div>
+            <Table striped bordered style={{ textTransform: "capitalize" }} hover size="sm" className='text-center capliatize'>
                 <thead>
                     <tr>
                         <th>No</th>

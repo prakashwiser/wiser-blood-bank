@@ -8,7 +8,11 @@ import { useNavigate } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
 import { Formik, Field, Form as FormikForm } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';  
+
 const adminEmail = "azarudeendanish@gmail.com";
+
 function SignUp() {
     const navigate = useNavigate();
     const validationSchema = Yup.object({
@@ -42,6 +46,11 @@ function SignUp() {
 
             if (existingUser) {
                 setFieldError('email', 'This email is already registered. Please use a different email.');
+                toast.error('This email is already registered. Please use a different email.', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    pauseOnHover: true,
+                });
                 return;
             }
 
@@ -59,18 +68,41 @@ function SignUp() {
 
             try {
                 await emailjs.send('service_p8uoogm', 'template_951ocpd', updateValues, 'm4PILZ5HjxJt37hVX');
+                toast.success('Email sent successfully to the user.', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    pauseOnHover: true,
+                });
             } catch (e) {
-                alert(e)
+                toast.error('Failed to send email to the user.', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    pauseOnHover: true,
+                });
             }
 
             try {
                 await emailjs.send('service_p8uoogm', 'template_11t1xvd', updateValues, 'm4PILZ5HjxJt37hVX');
+                toast.success('Admin email sent successfully.', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    pauseOnHover: true,
+                });
             } catch (e) {
-
+                toast.error('Failed to send email to the admin.', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    pauseOnHover: true,
+                });
             }
+
             navigate('/login');
         } catch (error) {
-            alert('An error occurred while submitting the form. Please try again later.');
+            toast.error('An error occurred while submitting the form. Please try again later.', {
+                position: "top-right",
+                autoClose: 5000,
+                pauseOnHover: true,
+            });
         }
     };
 

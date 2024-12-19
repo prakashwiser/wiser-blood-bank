@@ -103,8 +103,6 @@ const ForgotPasswordForm = () => {
         const { email } = values;
         if (email) {
             let Filterdata = data.filter(items => items.email === email);
-            // console.log(Filterdata);
-
             if (Filterdata.length > 0) {
                 let UserEmail = Filterdata[0].email;
                 let UserPassword = Filterdata[0].password;

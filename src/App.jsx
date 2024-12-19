@@ -11,21 +11,26 @@ import Footer from "./pages/Footer";
 import Navbars from "./Components/Navbar";
 import Login from "./pages/Login";
 import Forgotpassword from "./pages/Forgotpassword";
-
+import Profile from "./pages/Profile";
+import AddDonor from "./pages/AddDonor";
 function App() {
+
+
+
   return (
     <>
       <BrowserRouter>
-        <Navbars />
         <Routes>
           <Route index element={<Home />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/mail/:id" element={<Mail />} />
-          <Route path="/forgot" element={< Forgotpassword/>} />
+          <Route path="/forgot" element={< Forgotpassword />} />
           <Route path="/admin/:id" element={<Admin />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/adddonor" element={< AddDonor />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
       </BrowserRouter>
