@@ -30,7 +30,7 @@ const Navbars = () => {
             <Link className="text-dark text-decoration-none" to="/contact">Contact</Link>
           </Nav>
           <div className="d-flex gap-3">
-            <Link  to="/signin" className="btn btn-success text-white"> 
+            <Link  to="/login" className="btn btn-success text-white"> 
               Sign in
             </Link>
             <Link to="/signup" className="btn btn-outline-success">
