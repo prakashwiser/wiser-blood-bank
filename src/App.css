@@ -36,3 +36,272 @@
   color: #888;
 } */
 
+.hedter{
+   font-size: 30px;
+   text-align: center;
+}
+
+footer {
+  background-color: #343a40;
+  color: white;
+}
+
+footer a:hover {
+  color: #ff5733; 
+}
+
+footer .social-icons a {
+  transition: transform 0.3s;
+}
+
+footer .social-icons a:hover {
+  transform: scale(1.1);
+}
+
+.header:hover {
+  text-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 30px rgba(0, 255, 255, 1) !important; 
+ font-size: 28px;
+ transition: 0.3s;
+
+}
+
+.footer-logo {
+  text-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 30px rgba(0, 255, 255, 1);
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+.footer-logo:hover {
+  text-shadow: 0 0 30px rgba(255, 0, 0, 1), 0 0 40px rgba(0, 255, 255, 1);
+}
+
+
+.social-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+  color: #00acee; 
+}
+
+@media (max-width: 768px) {
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .footer-logo {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .list-unstyled {
+    padding-left: 0;
+  }
+
+  .list-unstyled li {
+    text-align: center;
+    margin: 5px 0;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .social-icon {
+    font-size: 1.5rem;
+    margin: 0 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-logo {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .social-icon {
+    font-size: 1.2rem;
+    margin: 0 6px;
+  }
+
+  .footer-logo,
+  .social-icons {
+    text-align: center;
+  }
+
+  .footer-logo:hover {
+    text-shadow: none;
+  }
+  .icons{
+    margin: auto;
+  }
+  .hedder1{
+    margin: auto;
+  }
+}
+.login-form {
+  background-color: rgba(255, 255, 255, 0.8); /* White with some transparency */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('/public/images/Blood.PNG');
+  background-size: cover; /* Ensures the image covers the entire background */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+.login-form {
+  background-color: rgba(255, 255, 255, 0.9); /* Light overlay for form */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.login-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.forgot-password a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.bgimage {
+  background: url('./assets/black.png') no-repeat;
+  background-size: cover;
+  height: auto;
+}
+
+.signup {
+  background: linear-gradient(45deg, rgba(234, 0, 255, 0.562), rgba(3, 205, 212, 0.63));
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 1px 3px 6px 8px rgb(17, 0, 252);
+  -webkit-box-shadow: 1px 3px 6px 8px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 1px 3px 6px 8px rgba(234, 245, 233, 0.6);
+}
+
+.pulsing-border {
+  border: 3px solid #3498db;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+      border-color: #3498db;
+  }
+  50% {
+      border-color: #9b59b6;
+  }
+  100% {
+      border-color: #3498db;
+  }
+}
+
+
+.fs1 {
+  font-size: 60px;
+}
+
+.font {
+  font-style: italic;
+  color: white;
+  /* -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; */
+}
+
+
+
+.custom-error {
+  color: white;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* From Uiverse.io by levxyca */
+button {
+  font-size: 1.5rem;
+  color: #fafafa !important;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid #fafafa;
+  box-shadow: 3px 3px #fafafa;
+  cursor: pointer;
+  margin: 35px 0;
+}
+
+button:active {
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+.warning{
+  background: linear-gradient(45deg,  rgba(0, 255, 213, 0.705),  rgb(216, 201, 201));
+}

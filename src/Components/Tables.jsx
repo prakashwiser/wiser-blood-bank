@@ -1,45 +1,31 @@
 import React from 'react'
-import Div from './Div'
 import { Table } from 'react-bootstrap'
 
-
-function Tables({ tableHeading = 'unknown table', data }) {
-    const dataKey = data[0]
-    const keys = Object.keys(dataKey); // [key1, key2, key3]
+function Tables({ tableHeading = 'Unknown Table', data }) {
+    if (!data || data.length === 0) return <div>No data available</div>;
+    const keys = Object.keys(data[0]);
 
     return (
         <>
-            <Div style={{ textAlign: 'center', color: 'red' }} className='fs-2'>{tableHeading}</Div>
-            <Table striped bordered hover size="sm">
+            <h3 className='py-3'>{tableHeading}</h3>
+            <Table striped bordered style={{textTransform:"capitalize"}} hover size="sm" className='text-center capliatize'>
                 <thead>
-                    <tr key='1'>
-                        <th>#</th>
-                        {keys.map(item =>
-                            <th>{item}</th>
-                        )}
-                        {/* 
-                        <th>name</th>
-                        <th>City</th>
-                        <th>Profession</th> */}
+                    <tr>
+                        <th>No</th>
+                        {keys.map((key, index) => (
+                            <th key={index}>{key.charAt(0).toUpperCase() + key.slice(1)}</th>
+                        ))}
                     </tr>
                 </thead>
                 <tbody>
-
-                    {data && data.map((item, index, keys) =>
-                        <tr>
-                            <td>{index+1}</td>
-                            {item.name && <td>{item?.name}</td>}
-                            {item.age && <td>{item?.age}</td>}
-                            {item.profession && <td>{item?.profession}</td>}
-                            {item.city && <td>{item?.city}</td>}
-                            {item.state && <td>{item?.state}</td>}
-                            {item.country && <td>{item?.country}</td>}
-                            {item.a && <td>{item?.a}</td>}
-                            {item.b && <td>{item?.b}</td>}
-                            {item.o && <td>{item?.o}</td>}
-                            {item.ab && <td>{item?.ab}</td>}
+                    {data.map((item, index) => (
+                        <tr key={index}>
+                            <td >{index + 1}</td>
+                            {keys.map((key, subIndex) => (
+                                <td key={subIndex}>{item[key]}</td>
+                            ))}
                         </tr>
-                    )}
+                    ))}
                 </tbody>
             </Table>
         </>
