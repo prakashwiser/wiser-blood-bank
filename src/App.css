@@ -19,7 +19,39 @@ h5 {
   font-size: 30px;
   text-align: center;
 }
+.animated-border-btn {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: #ff4d4d; 
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
+.animated-border-btn::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #ff0000, #ff6b6b, #ff4d4d, #cc0000);
+  z-index: -1;
+}
+
+
+.fw700 {
+  font-weight: 700;
+}
 footer {
   background-color: #343a40;
   color: white;

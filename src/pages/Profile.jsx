@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbars from '../Components/Navbar'
 import Div from '../Components/Div'
-
-
 function Profile() {
     const navigate = useNavigate()
     const [userData, setUserData] = useState(null)
@@ -15,7 +13,7 @@ function Profile() {
     }, [])
     const handleClick = () => {
         localStorage.removeItem('userData')
-        navigate('/')
+        navigate('/login')
     }
     return (
         <>

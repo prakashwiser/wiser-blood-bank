@@ -58,7 +58,6 @@ function Footer() {
 
         <Col lg={4} className="d-flex flex-column justify-content-center align-items-center my-3 my-md-0">
           <Div className='fs-4 fw-1'>Quick Links</Div>
-          <Link className="text-dark text-decoration-none" to="/">Home</Link>
           <Link className="text-dark text-decoration-none" to="/about">About</Link>
           <Link className="text-dark text-decoration-none" to="/contact">Contact</Link>
         </Col>

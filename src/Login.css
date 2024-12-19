@@ -5,7 +5,6 @@
     font-family: 'Arial', sans-serif;
 }
 .banner {
-    /* background: linear-gradient(135deg, #6e7bff, #3a4dff); */
     height: 100vh;
     background-image: url('/public/images/Blood.PNG');
     background-size: cover;
