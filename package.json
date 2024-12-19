@@ -11,34 +11,21 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-<<<<<<< HEAD
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "emailjs": "^4.0.3",
-=======
     "aos": "^2.3.4",
-    "axios": "^1.7.9",
-    "bootstrap": "^5.3.3",
     "express": "^4.21.2",
->>>>>>> d3d441b4ee2b617c7318c8bcbfc20e4d27daaadc
     "formik": "^2.4.6",
     "nodemailer": "^6.9.16",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.7",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
-<<<<<<< HEAD
     "react-model": "^4.3.1",
     "react-router-dom": "^7.0.2",
     "react-toastify": "^11.0.1",
     "yup": "^1.6.0"
-=======
-    "react-modal": "^3.16.3",
-    "react-model": "^4.3.1",
-    "react-router-dom": "^7.0.2",
-    "react-toastify": "^11.0.1",
-    "yup": "^1.5.0"
->>>>>>> d3d441b4ee2b617c7318c8bcbfc20e4d27daaadc
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
