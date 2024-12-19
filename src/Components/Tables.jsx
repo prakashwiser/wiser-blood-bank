@@ -1,49 +1,51 @@
-import React from 'react'
-import Div from './Div'
-import { Table } from 'react-bootstrap'
+import React from 'react';
+import { Table } from 'react-bootstrap';
+import Div from './Div';
+import PropTypes from 'prop-types';
 
-
-function Tables({ tableHeading = 'unknown table', data }) {
-    const dataKey = data[0]
-    const keys = Object.keys(dataKey); // [key1, key2, key3]
-
+function Tables({ tableHeading = 'Unknown Table', data, userData }) {
+    if (!data || data.length === 0) return <div>No data available</div>;
+    const keys = Object.keys(data[0]);
     return (
         <>
-            <Div style={{ textAlign: 'center', color: 'red' }} className='fs-2'>{tableHeading}</Div>
-            <Table striped bordered hover size="sm">
-                <thead>
-                    <tr key='1'>
-                        <th>#</th>
-                        {keys.map(item =>
-                            <th>{item}</th>
-                        )}
-                        {/* 
-                        <th>name</th>
-                        <th>City</th>
-                        <th>Profession</th> */}
-                    </tr>
-                </thead>
-                <tbody>
-
-                    {data && data.map((item, index, keys) =>
+            <Div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+                <h3 className='py-3 footer-logo text-danger fw700 fs-4'>{tableHeading}</h3>
+                {userData && (
+                    <button className="btn animated-border-btn">
+                        Add New Donor
+                    </button>
+                )}
+            </Div>
+            <Div className="table-responsive">
+                <Table striped bordered hover size="sm" className='text-center capitalize'>
+                    <thead>
                         <tr>
-                            <td>{index+1}</td>
-                            {item.name && <td>{item?.name}</td>}
-                            {item.age && <td>{item?.age}</td>}
-                            {item.profession && <td>{item?.profession}</td>}
-                            {item.city && <td>{item?.city}</td>}
-                            {item.state && <td>{item?.state}</td>}
-                            {item.country && <td>{item?.country}</td>}
-                            {item.a && <td>{item?.a}</td>}
-                            {item.b && <td>{item?.b}</td>}
-                            {item.o && <td>{item?.o}</td>}
-                            {item.ab && <td>{item?.ab}</td>}
+                            <th>No</th>
+                            {keys.map((key, index) => (
+                                <th key={index}>{key.charAt(0).toUpperCase() + key.slice(1)}</th>
+                            ))}
                         </tr>
-                    )}
-                </tbody>
-            </Table>
+                    </thead>
+                    <tbody>
+                        {data.map((item, index) => (
+                            <tr key={index}>
+                                <td>{index + 1}</td>
+                                {keys.map((key) => (
+                                    <td key={`${index}-${key}`}>{item[key]}</td>
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            </Div>
         </>
-    )
+    );
 }
 
-export default Tables
+Tables.propTypes = {
+    tableHeading: PropTypes.string,
+    data: PropTypes.array.isRequired,
+    userData: PropTypes.object,
+};
+
+export default Tables;
