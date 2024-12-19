@@ -1,44 +1,23 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-.card {
-  padding: 2em;
-}
-.read-the-docs {
-  color: #888;
-} */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
-.hedter{
-   font-size: 30px;
-   text-align: center;
+body {
+  font-family: "Montserrat", sans-serif;
+}
+p {
+  font-family: "Poppins", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Inter", sans-serif;
+}
+.hedter {
+  font-size: 30px;
+  text-align: center;
 }
 
 footer {
@@ -47,7 +26,7 @@ footer {
 }
 
 footer a:hover {
-  color: #ff5733; 
+  color: #ff5733;
 }
 
 footer .social-icons a {
@@ -59,10 +38,9 @@ footer .social-icons a:hover {
 }
 
 .header:hover {
-  text-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 30px rgba(0, 255, 255, 1) !important; 
- font-size: 28px;
- transition: 0.3s;
-
+  text-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 30px rgba(0, 255, 255, 1) !important;
+  font-size: 28px;
+  transition: 0.3s;
 }
 
 .footer-logo {
@@ -74,14 +52,13 @@ footer .social-icons a:hover {
   text-shadow: 0 0 30px rgba(255, 0, 0, 1), 0 0 40px rgba(0, 255, 255, 1);
 }
 
-
 .social-icon {
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-icon:hover {
   transform: scale(1.2);
-  color: #00acee; 
+  color: #00acee;
 }
 
 @media (max-width: 768px) {
@@ -139,10 +116,10 @@ footer .social-icons a:hover {
   .footer-logo:hover {
     text-shadow: none;
   }
-  .icons{
+  .icons {
     margin: auto;
   }
-  .hedder1{
+  .hedder1 {
     margin: auto;
   }
 }
@@ -160,7 +137,7 @@ footer .social-icons a:hover {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('/public/images/Blood.PNG');
+  background-image: url("/public/images/Blood.PNG");
   background-size: cover; /* Ensures the image covers the entire background */
   background-position: center; /* Center the background image */
   background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -233,13 +210,17 @@ footer .social-icons a:hover {
 }
 
 .bgimage {
-  background: url('./assets/black.png') no-repeat;
+  background: url("./assets/black.png") no-repeat;
   background-size: cover;
   height: auto;
 }
 
 .signup {
-  background: linear-gradient(45deg, rgba(234, 0, 255, 0.562), rgba(3, 205, 212, 0.63));
+  background: linear-gradient(
+    45deg,
+    rgba(234, 0, 255, 0.562),
+    rgba(3, 205, 212, 0.63)
+  );
   border-radius: 20px;
   padding: 40px;
   box-shadow: 1px 3px 6px 8px rgb(17, 0, 252);
@@ -254,16 +235,15 @@ footer .social-icons a:hover {
 
 @keyframes pulse {
   0% {
-      border-color: #3498db;
+    border-color: #3498db;
   }
   50% {
-      border-color: #9b59b6;
+    border-color: #9b59b6;
   }
   100% {
-      border-color: #3498db;
+    border-color: #3498db;
   }
 }
-
 
 .fs1 {
   font-size: 60px;
@@ -276,8 +256,6 @@ footer .social-icons a:hover {
   background-clip: text;
   color: transparent; */
 }
-
-
 
 .custom-error {
   color: white;
@@ -302,6 +280,10 @@ button:active {
   box-shadow: none;
   transform: translate(3px, 3px);
 }
-.warning{
-  background: linear-gradient(45deg,  rgba(0, 255, 213, 0.705),  rgb(216, 201, 201));
+.warning {
+  background: linear-gradient(
+    45deg,
+    rgba(0, 255, 213, 0.705),
+    rgb(216, 201, 201)
+  );
 }
