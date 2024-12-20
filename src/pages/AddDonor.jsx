@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import emailjs from '@emailjs/browser';
 import { Form, Button, Container, Card, Row, Col } from "react-bootstrap";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,21 +10,25 @@ function Home() {
   const [userName, setUserName] = useState("");
   const [bgroup, setBgroup] = useState("");
   const [userNumber, setUserNumber] = useState("");
-  const [datetime, setDatetime] = useState("");
+  const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const generateRandomId = () => Math.floor(10000 + Math.random() * 90000).toString();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!userName || !bgroup || !userNumber || !datetime) {
+    if (!userName || !bgroup || !userNumber || !email) {
       toast.error("All fields are required!");
       return;
     }
 
     if (!/^\d{10}$/.test(userNumber)) {
       toast.error("Please enter a valid 10-digit phone number!");
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("Please enter a valid email address!");
       return;
     }
 
@@ -38,16 +43,18 @@ function Home() {
         userName,
         bgroup,
         userNumber,
-        datetime,
+        email,
       });
+      const emailData = { email, donnerid: randomId, number:userNumber };
+      await emailjs.send("service_2cer1wn", "template_prcyhjn", emailData, "U0vN6ww9BrU7Y_JSF");
 
       setDonnerid("");
       setUserName("");
       setBgroup("");
       setUserNumber("");
-      setDatetime("");
+      setEmail("");
 
-      toast.success("Successfully updated donor data!");
+      toast.success("Donor data submitted successfully and email sent!");
     } catch (error) {
       toast.error("Error: " + error.message);
     } finally {
@@ -159,13 +166,14 @@ function Home() {
             </Row>
             <Row>
               <Col>
-                <Form.Group className="mb-3" controlId="formDateTime">
-                  <Form.Label className="fw-bold">Date & Time</Form.Label>
+                <Form.Group className="mb-3" controlId="formEmail">
+                  <Form.Label className="fw-bold">Email</Form.Label>
                   <Form.Control
-                    type="date"
-                    value={datetime}
-                    onChange={(e) => setDatetime(e.target.value)}
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="rounded-pill"
+                    placeholder="Enter email"
                     style={{
                       padding: "10px 15px",
                       border: "1px solid #ced4da",
