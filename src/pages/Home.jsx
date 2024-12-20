@@ -26,19 +26,27 @@ function Home() {
         };
         fetchData();
     }, []);
-
     useEffect(() => {
-        console.log("userData in Home Component:", userData);
-    }, [userData]);
+     }, [userData]);
 
     if (isLoading) {
-        return <p>Loading...</p>;
+        return (
+            <>
+                <Navbars />
+                <Image src={banner} className='img-fluid w-100' alt='banner' />
+                <p className='footer-logo text-danger fw700 fs-4 my-5 text-center'>Loading...</p>
+            </>
+        );
     }
-
     if (!data.length) {
-        return <p>No data available</p>;
+        return (
+            <>
+                <Navbars />
+                <Image src={banner} className='img-fluid w-100' alt='banner' />
+                <p className='footer-logo text-danger fw700 fs-4 my-5 text-center'>No data available</p>
+            </>
+        );
     }
-
     const lastEntry = data.at(-1);
 
     return (

@@ -13,7 +13,7 @@ function Profile() {
     }, [])
     const handleClick = () => {
         localStorage.removeItem('userData')
-        navigate('/login')
+        navigate('/')
     }
     return (
         <>

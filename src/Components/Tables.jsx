@@ -13,12 +13,12 @@ function Tables({ tableHeading = 'Unknown Table', data, userData }) {
             <Div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
                 <h3 className='py-3 footer-logo text-danger fw700 fs-4'>{tableHeading}</h3>
                 {userData && (
-                    <button className="btn animated-border-btn">
+                    <button onClick={() => navigator("/adddonor/2")} className="btn animated-border-btn">
                         Add Blood
                     </button>
                 )}
                 {tableHeading === "All Donor Details" &&
-                    <button className="btn animated-border-btn" onClick={() => navigator("/adddonor")}>
+                    <button className="btn animated-border-btn" onClick={() => navigator("/adddonor/1")}>
                         Add Donor
                     </button>
                 }
