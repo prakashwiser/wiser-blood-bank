@@ -13,7 +13,9 @@ import Login from "./pages/Login";
 import Forgotpassword from "./pages/Forgotpassword";
 import Profile from "./pages/Profile";
 import AddDonor from "./pages/AddDonor";
+import NotFound from "./Components/NotFound";
 function App() {
+
 
 
 
@@ -31,6 +33,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/adddonor" element={< AddDonor />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>

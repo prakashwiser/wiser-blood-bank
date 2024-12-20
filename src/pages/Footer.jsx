@@ -44,7 +44,6 @@ function Footer() {
           </Nav.Item>
         </Nav>
       </Nav>
-
       <hr />
       <Row>
         <Col lg={4}>
