@@ -8,11 +8,11 @@ import SignUp from './Components/SignUp';
 import Mail from './Components/Mail';
 import Admin from './Components/Admin';
 import Footer from "./pages/Footer";
-import Navbars from "./Components/Navbar";
 import Login from "./pages/Login";
 import Forgotpassword from "./pages/Forgotpassword";
 import Profile from "./pages/Profile";
-import AddDonor from "./pages/AddDonor";
+import AddDonor from "./pages/AddBlood";
+import DonorDetails from "./pages/DonorDetails";
 import NotFound from "./Components/NotFound";
 function App() {
 
@@ -31,7 +31,8 @@ function App() {
           <Route path="/forgot" element={< Forgotpassword />} />
           <Route path="/admin/:id" element={<Admin />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/adddonor/:id" element={< AddDonor />} />
+          <Route path="/addblood" element={< AddDonor />} />
+          <Route path="/donordetails/:id" element={< DonorDetails />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

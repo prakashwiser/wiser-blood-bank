@@ -19,8 +19,10 @@ h5 {
   font-size: 30px;
   text-align: center;
 }
-.animated-border-btn,
-.btn:hover {
+button{
+  margin: 0px !important;
+}
+.animated-border-btn{
   position: relative;
   display: inline-block;
   padding: 10px 20px;
