@@ -5,9 +5,10 @@ import Modal from 'react-modal';
 import { Col, Form, Row, Table, Spinner, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
-
+import Image from "../Components/Image";
 Modal.setAppElement('#root');
-
+import banner from "../assets/home-banner.webp";
+import Navbar from "../Components/Navbar";
 const customStyles = {
   content: {
     top: '50%',
@@ -92,37 +93,15 @@ function Home() {
   const bloodONegative = filterBlood(apiData, 'O-', 'o-')
   const bloodABPositive = filterBlood(apiData, 'AB+', 'ab+')
   const bloodABNegative = filterBlood(apiData, 'AB-', 'ab-')
-  const handleDelete = async (itemId) => {
-    try {
-      const response = await fetch(`https://67593f4e60576a194d140021.mockapi.io/donner/${itemId}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) {
-        toast.error('donro is deleted')
-      } else {
-        toast.error('Failed to delete item');
-      }
-    } catch (error) {
-      toast.error('Error occurred while deleting item:', error);
-    } finally {
-      handleCloseModal();
-    }
-  };
-
-
-  const handleShowModal = (itemId) => {
-    setItemToDelete(itemId);
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setItemToDelete(null);
+  const handleDelete = async (id) => {
+    const response = axios.delete(`https://67593f4e60576a194d140021.mockapi.io/donner/${id}`)
     getApiData()
-  };
+
+  }
   return (
     <>
+      <Navbar />
+      <Image src={banner} className="w-100 img-fluid" />
       <ToastContainer />
       <div className="container py-4">
         <div className="card shadow-sm rounded p-3 mb-4">
@@ -151,8 +130,7 @@ function Home() {
                     <th>Name</th>
                     <th>Blood Group</th>
                     <th>Mobile Number</th>
-                    <th>Date & Time</th>
-                    <th>QR Code</th>
+                    <th>Details</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
@@ -165,7 +143,6 @@ function Home() {
                         <td>{a.userName}</td>
                         <td>{a.bgroup}</td>
                         <td>{a.userNumber}</td>
-                        <td>{a.datetime}</td>
                         <td>
                           <Link
                             className="text-decoration-none"
@@ -177,7 +154,7 @@ function Home() {
                         <td>
                           <Button
                             variant="danger"
-                            onClick={() => handleShowModal(a.id)}
+                            onClick={() => handleDelete(a.id)}
                           >
                             Delete
                           </Button>
