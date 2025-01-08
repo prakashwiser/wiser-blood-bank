@@ -105,113 +105,199 @@ function SignUp() {
     };
 
     return (
-        <div className="p-5 bgimage">
-            <div className="fs-1 fw-bold text-center py-lg-3 font">Blood Bank</div>
-            <Row>
-                <Col lg={4}></Col>
-                <Col lg={4}>
-                    <Formik
-                        initialValues={{
-                            name: '',
-                            email: '',
-                            number: '',
-                            password: '',
-                            cpassword: '',
-                        }}
-                        validationSchema={validationSchema}
-                        onSubmit={handleFormSubmit}
-                    >
-                        {({ errors, touched }) => (
-                            <FormikForm className="signup pulsing-border">
-                                <div className="fs1 fw-bold text-center text-white">
-                                    <FaUserCircle />
-                                </div>
-                                <div className="fs-3 fw-bold mb-4 text-center text-white">Sign Up</div>
+        <div
+        className="p-5"
+        style={{
+            backgroundColor: "#f8f9fa",
+            minHeight: "100vh", 
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+        }}
+    >
+        <Row className="w-100">
+            <Col lg={4}></Col>
+            <Col lg={4}>
+                <Formik
+                    initialValues={{
+                        name: "",
+                        email: "",
+                        number: "",
+                        password: "",
+                        cpassword: "",
+                    }}
+                    validationSchema={validationSchema}
+                    onSubmit={handleFormSubmit}
+                >
+                    {({ errors, touched }) => (
+                        <FormikForm
+                            className="signup"
+                            style={{
+                                padding: "2rem",
+                                backgroundColor: "white",
+                                borderRadius: "10px",
+                                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", 
+                                maxWidth: "400px",
+                                margin: "0 auto",
+                            }}
+                        >
+                            <div
+                                className="fs-3 fw-bold mb-4 text-center"
+                                style={{
+                                    color: "#333",
+                                }}
+                            >
+                                <FaUserCircle style={{ fontSize: "2.5rem", color: "#dc3545" }} />
+                                <div>Sign Up</div>
+                            </div>
+    
+                            <Form.Group className="mb-3">
+                                <Field
+                                    name="name"
+                                    type="text"
+                                    placeholder="Name"
+                                    className={`form-control ${
+                                        errors.name && touched.name ? "is-invalid" : ""
+                                    }`}
+                                    style={{
+                                        borderColor: errors.name && touched.name ? "#dc3545" : "",
+                                    }}
+                                />
+                                {errors.name && touched.name && (
+                                    <div
+                                        style={{
+                                            color: "#dc3545",
+                                            fontSize: "0.875rem",
+                                            marginTop: "0.25rem",
+                                        }}
+                                    >
+                                        {errors.name}
+                                    </div>
+                                )}
+                            </Form.Group>
+    
+                            <Form.Group className="mb-3">
+                                <Field
+                                    name="email"
+                                    type="email"
+                                    placeholder="Email"
+                                    className={`form-control ${
+                                        errors.email && touched.email ? "is-invalid" : ""
+                                    }`}
+                                    style={{
+                                        borderColor: errors.email && touched.email ? "#dc3545" : "",
+                                    }}
+                                />
+                                {errors.email && touched.email && (
+                                    <div
+                                        style={{
+                                            color: "#dc3545",
+                                            fontSize: "0.875rem",
+                                            marginTop: "0.25rem",
+                                        }}
+                                    >
+                                        {errors.email}
+                                    </div>
+                                )}
+                            </Form.Group>
+    
+                            <Form.Group className="mb-3">
+                                <Field
+                                    name="number"
+                                    type="text"
+                                    placeholder="Number"
+                                    className={`form-control ${
+                                        errors.number && touched.number ? "is-invalid" : ""
+                                    }`}
+                                    style={{
+                                        borderColor: errors.number && touched.number ? "#dc3545" : "",
+                                    }}
+                                />
+                                {errors.number && touched.number && (
+                                    <div
+                                        style={{
+                                            color: "#dc3545",
+                                            fontSize: "0.875rem",
+                                            marginTop: "0.25rem",
+                                        }}
+                                    >
+                                        {errors.number}
+                                    </div>
+                                )}
+                            </Form.Group>
+    
+                            <Form.Group className="mb-3">
+                                <Field
+                                    name="password"
+                                    type="password"
+                                    placeholder="Password"
+                                    className={`form-control ${
+                                        errors.password && touched.password ? "is-invalid" : ""
+                                    }`}
+                                    style={{
+                                        borderColor: errors.password && touched.password ? "#dc3545" : "",
+                                    }}
+                                />
+                                {errors.password && touched.password && (
+                                    <div
+                                        style={{
+                                            color: "#dc3545",
+                                            fontSize: "0.875rem",
+                                            marginTop: "0.25rem",
+                                        }}
+                                    >
+                                        {errors.password}
+                                    </div>
+                                )}
+                            </Form.Group>
+    
+                            <Form.Group className="mb-3">
+                                <Field
+                                    name="cpassword"
+                                    type="password"
+                                    placeholder="Confirm Password"
+                                    className={`form-control ${
+                                        errors.cpassword && touched.cpassword ? "is-invalid" : ""
+                                    }`}
+                                    style={{
+                                        borderColor: errors.cpassword && touched.cpassword ? "#dc3545" : "",
+                                    }}
+                                />
+                                {errors.cpassword && touched.cpassword && (
+                                    <div
+                                        style={{
+                                            color: "#dc3545",
+                                            fontSize: "0.875rem",
+                                            marginTop: "0.25rem",
+                                        }}
+                                    >
+                                        {errors.cpassword}
+                                    </div>
+                                )}
+                            </Form.Group>
+    
+                            <div className="d-grid">
+                                <button
+                                    className="btn btn-danger"
+                                    type="submit"
+                                    style={{
+                                        padding: "0.75rem",
+                                        fontSize: "1rem",
+                                        borderRadius: "5px",
+                                    }}
+                                >
+                                    Submit
+                                </button>
+                            </div>
+                        </FormikForm>
+                    )}
+                </Formik>
+            </Col>
+            <Col lg={4}></Col>
+        </Row>
+    </div>
+    
 
-                                <Form.Group as={Row} className="mb-3 py-lg-3 my-md-4">
-                                    <Col sm="12">
-                                        <Field
-                                            name="name"
-                                            type="text"
-                                            id="name"
-                                            placeholder="Name"
-                                            className={`form-control ${errors.name && touched.name ? 'is-invalid' : ''}`}
-                                        />
-                                        {errors.name && touched.name && (
-                                            <div className="custom-error">{errors.name}</div>
-                                        )}
-                                    </Col>
-                                </Form.Group>
-
-                                <Form.Group as={Row} className="mb-3 py-lg-2 my-md-4">
-                                    <Col sm="12">
-                                        <Field
-                                            name="email"
-                                            type="email"
-                                            id="email"
-                                            placeholder="Email"
-                                            className={`form-control ${errors.email && touched.email ? 'is-invalid' : ''}`}
-                                        />
-                                        {errors.email && touched.email && (
-                                            <div className="custom-error">{errors.email}</div>
-                                        )}
-                                    </Col>
-                                </Form.Group>
-
-                                <Form.Group as={Row} className="mb-3 py-lg-2 my-md-4">
-                                    <Col sm="12">
-                                        <Field
-                                            name="number"
-                                            type="text"
-                                            placeholder="Number"
-                                            className={`form-control ${errors.number && touched.number ? 'is-invalid' : ''}`}
-                                        />
-                                        {errors.number && touched.number && (
-                                            <div className="custom-error">{errors.number}</div>
-                                        )}
-                                    </Col>
-                                </Form.Group>
-
-                                <Form.Group as={Row} className="mb-3 py-lg-2 my-md-4">
-                                    <Col sm="12">
-                                        <Field
-                                            name="password"
-                                            type="password"
-                                            placeholder="Password"
-                                            className={`form-control ${errors.password && touched.password ? 'is-invalid' : ''}`}
-                                        />
-                                        {errors.password && touched.password && (
-                                            <div className="custom-error">{errors.password}</div>
-                                        )}
-                                    </Col>
-                                </Form.Group>
-
-                                <Form.Group as={Row} className="mb-3 py-lg-2 my-md-4">
-                                    <Col sm="12">
-                                        <Field
-                                            name="cpassword"
-                                            type="password"
-                                            placeholder="Confirm Password"
-                                            className={`form-control ${errors.cpassword && touched.cpassword ? 'is-invalid' : ''}`}
-                                        />
-                                        {errors.cpassword && touched.cpassword && (
-                                            <div className="custom-error">{errors.cpassword}</div>
-                                        )}
-                                    </Col>
-                                </Form.Group>
-
-                                <div className="d-flex justify-content-center">
-                                    <button className="btn" type="submit">
-                                        Submit
-                                    </button>
-                                </div>
-                            </FormikForm>
-                        )}
-                    </Formik>
-                </Col>
-                <Col lg={4}></Col>
-            </Row>
-        </div>
     );
 }
 
