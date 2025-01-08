@@ -33,7 +33,7 @@ function AddBlood() {
           setDifferenceDate("Nil");
         }
       } else {
-        toast.error("Invalid donor ID. Please enter a valid ID.");
+        toast.error("Invalid donor ID. Please enter a valid ID...");
         navigate("/");
       }
     } else {
