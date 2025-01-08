@@ -68,9 +68,7 @@ const LoginForm = () => {
         toast.error('Please check your email and admin approval.', { position: 'top-right', autoClose: 3000 });
         resetForm();
       }
-
       setIsLoading(false);
-
     } catch (error) {
       setLoginError('An error occurred while logging in. Please try again.');
       toast.error('An error occurred. Please try again.', { position: 'top-right', autoClose: 3000 });

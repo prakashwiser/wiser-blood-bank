@@ -65,7 +65,6 @@ function Home() {
   }
 
   async function getApiData() {
-
     try {
       setLoading(true)
       const response = await axios.get('https://67593f4e60576a194d140021.mockapi.io/donner')

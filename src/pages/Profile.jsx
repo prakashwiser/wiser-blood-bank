@@ -8,7 +8,6 @@ function Profile() {
 
     useEffect(() => {
         let data = localStorage.getItem('userData')
-        console.log(data);
         setUserData(data)
     }, [])
     const handleClick = () => {

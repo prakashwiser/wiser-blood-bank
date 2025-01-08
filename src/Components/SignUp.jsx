@@ -65,7 +65,6 @@ function SignUp() {
             const updateResponse = await axios.get('https://67593faf60576a194d140245.mockapi.io/Donor');
             let UpdateExistingUser = updateResponse.data.find(user => user.email === values.email);
             let updateValues = { ...UpdateExistingUser, link: `http://localhost:5173/mail/${UpdateExistingUser.id}`, adminEmail, adminLink: `http://localhost:5173/admin/${UpdateExistingUser.id}` };
-
             try {
                 await emailjs.send('service_p8uoogm', 'template_951ocpd', updateValues, 'm4PILZ5HjxJt37hVX');
                 toast.success('Email sent successfully to the user.', {
@@ -95,7 +94,6 @@ function SignUp() {
                     pauseOnHover: true,
                 });
             }
-
             navigate('/login');
         } catch (error) {
             toast.error('An error occurred while submitting the form. Please try again later.', {
