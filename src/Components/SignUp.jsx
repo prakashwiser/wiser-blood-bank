@@ -9,7 +9,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { Formik, Field, Form as FormikForm } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';  
+import 'react-toastify/dist/ReactToastify.css';
 
 const adminEmail = "azarudeendanish@gmail.com";
 
@@ -64,7 +64,7 @@ function SignUp() {
             });
             const updateResponse = await axios.get('https://67593faf60576a194d140245.mockapi.io/Donor');
             let UpdateExistingUser = updateResponse.data.find(user => user.email === values.email);
-            let updateValues = { ...UpdateExistingUser, link: `http://localhost:5173/mail/${UpdateExistingUser.id}`, adminEmail, adminLink: `http://localhost:5173/admin/${UpdateExistingUser.id}` };
+            let updateValues = { ...UpdateExistingUser, link: `https://wiser-blood-banks.vercel.app/mail/${UpdateExistingUser.id}`, adminEmail, adminLink: `https://wiser-blood-banks.vercel.app/admin/${UpdateExistingUser.id}` };
             try {
                 await emailjs.send('service_p8uoogm', 'template_951ocpd', updateValues, 'm4PILZ5HjxJt37hVX');
                 toast.success('Email sent successfully to the user.', {
