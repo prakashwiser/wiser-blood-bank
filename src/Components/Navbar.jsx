@@ -19,7 +19,7 @@ const Navbars = () => {
           src={Logo}
           alt="Logo"
         />
-        <Link className="text-dark text-decoration-none" to="/"><Text css='text-success fs-4 fw-bold' text='Avanam Blood Bank' /></Link>
+        <Link className="text-dark text-decoration-none d-none d-md-block" to="/"><Text css='text-success fs-4 fw-bold' text='Avanam Blood Bank' /></Link>
 
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">

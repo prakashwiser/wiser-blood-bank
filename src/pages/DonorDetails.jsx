@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,11 +7,15 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 export default function DonorDetail() {
+    const navigate = useNavigate()
     const { id } = useParams();
     const [apiData, setApiData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
-
+    const handleclick = () => {
+        setShowModal(!showModal)
+        navigate("/")
+    }
     const getApiData = async () => {
         try {
             setLoading(true);
@@ -65,7 +69,7 @@ export default function DonorDetail() {
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={() => setShowModal(false)}>
+                        <Button variant="secondary" onClick={handleclick}>
                             Close
                         </Button>
                     </Modal.Footer>
