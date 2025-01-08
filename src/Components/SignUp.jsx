@@ -11,7 +11,7 @@ import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const adminEmail = "azarudeendanish@gmail.com";
+const adminEmail = "prakashvadakadu8@gmail.com";
 
 function SignUp() {
     const navigate = useNavigate();
